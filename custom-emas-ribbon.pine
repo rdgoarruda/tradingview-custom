@@ -1,0 +1,156 @@
+//@version=5
+indicator(title='Multi-Simple Moving Average (EMA)', shorttitle='Multi-Exponential Moving Average (EMA)', overlay=true)
+
+bool isShowEma0 = input.bool(true, title='Display EMA0', group="EMA")
+bool isShowEma1 = input.bool(true, title='Display EMA1', group="EMA")
+bool isShowEma2 = input.bool(true, title='Display EMA2', group="EMA")
+bool isShowEma3 = input.bool(true, title='Display EMA3', group="EMA")
+bool isShowEma4 = input.bool(true, title='Display EMA4', group="EMA")
+bool isShowEma5 = input.bool(true, title='Display EMA5', group="EMA")
+bool isShowEma6 = input.bool(true, title='Display EMA6', group="EMA")
+bool isShowEma7 = input.bool(true, title='Display EMA7', group="EMA")
+bool isShowEma8 = input.bool(true, title='Display EMA8', group="EMA")
+
+var label labelema0 = na
+var label labelema1 = na
+var label labelema2 = na
+var label labelema3 = na
+var label labelema4 = na
+var label labelema5 = na
+var label labelema6 = na
+var label labelema7 = na
+var label labelema8 = na
+
+length0 = input.int(9, title='Length 0', minval=1, group='EMA Length')
+length1 = input.int(21, title='Length 1', minval=1, group='EMA Length')
+length2 = input.int(50, title='Length 2', minval=1, group='EMA Length')
+length3 = input.int(72, title='Length 3', minval=1, group='EMA Length')
+length4 = input.int(100, title='Length 4', minval=1, group='EMA Length')
+length5 = input.int(200, title='Length 5', minval=1, group='EMA Length')
+length6 = input.int(305, title='Length 6', minval=1, group='EMA Length')
+length7 = input.int(610, title='Length 7', minval=1, group='EMA Length')
+length8 = input.int(1200, title='Length 8', minval=1, group='EMA Length')
+
+
+colorL0 = input.color(#BFFFBF, title='Color 0', group='EMA Color')
+colorL1 = input.color(#BFFFBF, title='Color 1', group='EMA Color')
+colorL2 = input.color(#80FF80, title='Color 2', group='EMA Color')
+colorL3 = input.color(#40BF40, title='Color 3', group='EMA Color')
+colorL4 = input.color(#008000, title='Color 4', group='EMA Color')
+colorL5 = input.color(#FFCCCC, title='Color 5', group='EMA Color')
+colorL6 = input.color(#FF9999, title='Color 6', group='EMA Color')
+colorL7 = input.color(#FF3333, title='Color 7', group='EMA Color')
+colorL8 = input.color(#CC0000, title='Color 8', group='EMA Color')
+
+ema0 = isShowEma0 ? ta.ema(close, length0) : na
+ema1 = isShowEma1 ? ta.ema(close, length1) : na
+ema2 = isShowEma2 ? ta.ema(close, length2) : na
+ema3 = isShowEma3 ? ta.ema(close, length3) : na
+ema4 = isShowEma4 ? ta.ema(close, length4) : na
+ema5 = isShowEma5 ? ta.ema(close, length5) : na
+ema6 = isShowEma6 ? ta.ema(close, length6) : na
+ema7 = isShowEma7 ? ta.ema(close, length7) : na
+ema8 = isShowEma8 ? ta.ema(close, length8) : na
+
+
+
+if (isShowEma0)
+    if (na(labelema0))
+        labelema0 := label.new(x = bar_index, y = ema0, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL0, 0), text = str.format("ema {0}", length0))
+    else
+        label.set_xy(labelema0, x = bar_index, y = ema0)
+else
+    if (na(labelema0) == false)
+        label.delete(labelema0)
+        labelema0 := na
+
+if (isShowEma1)
+    if (na(labelema1))
+        labelema1 := label.new(x = bar_index, y = ema1, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL1, 0), text = str.format("ema {0}", length1))
+    else
+        label.set_xy(labelema1, x = bar_index, y = ema1)
+else
+    if (na(labelema1) == false)
+        label.delete(labelema1)
+        labelema1 := na
+
+if (isShowEma2)
+    if (na(labelema2))
+        labelema2 := label.new(x = bar_index, y = ema2, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL2, 0), text = str.format("ema {0}", length2))
+    else
+        label.set_xy(labelema2, x = bar_index, y = ema2)
+else
+    if (na(labelema2) == false)
+        label.delete(labelema2)
+        labelema2 := na
+
+if (isShowEma3)
+    if (na(labelema3))
+        labelema3 := label.new(x = bar_index, y = ema3, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL3, 0), text = str.format("ema {0}", length3))
+    else
+        label.set_xy(labelema3, x = bar_index, y = ema3)
+else
+    if (na(labelema3) == false)
+        label.delete(labelema3)
+        labelema3 := na
+
+if (isShowEma4)
+    if (na(labelema4))
+        labelema4 := label.new(x = bar_index, y = ema4, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL4, 0), text = str.format("ema {0}", length4))
+    else
+        label.set_xy(labelema4, x = bar_index, y = ema4)
+else
+    if (na(labelema4) == false)
+        label.delete(labelema4)
+        labelema4 := na
+
+if (isShowEma5)
+    if (na(labelema5))
+        labelema5 := label.new(x = bar_index, y = ema5, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL5, 0), text = str.format("ema {0}", length5))
+    else
+        label.set_xy(labelema5, x = bar_index, y = ema5)
+else
+    if (na(labelema5) == false)
+        label.delete(labelema5)
+        labelema5 := na
+
+if (isShowEma6)
+    if (na(labelema6))
+        labelema6 := label.new(x = bar_index, y = ema6, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL6, 0), text = str.format("ema {0}", length6))
+    else
+        label.set_xy(labelema6, x = bar_index, y = ema6)
+else
+    if (na(labelema6) == false)
+        label.delete(labelema6)
+        labelema6 := na
+
+if (isShowEma7)
+    if (na(labelema7))
+        labelema7 := label.new(x = bar_index, y = ema7, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL7, 0), text = str.format("ema {0}", length7))
+    else
+        label.set_xy(labelema7, x = bar_index, y = ema7)
+else
+    if (na(labelema7) == false)
+        label.delete(labelema7)
+        labelema7 := na
+
+if (isShowEma8)
+    if (na(labelema8))
+        labelema8 := label.new(x = bar_index, y = ema8, style = label.style_label_left, color = color.rgb(0, 0, 0, 100), textcolor = color.new(colorL8, 0), text = str.format("ema {0}", length8))
+    else
+        label.set_xy(labelema8, x = bar_index, y = ema8)
+else
+    if (na(labelema8) == false)
+        label.delete(labelema8)
+        labelema8 := na
+
+
+plot(ema0, 'ema0', color=color.new(colorL0, 0), linewidth=2)
+plot(ema1, 'ema1', color=color.new(colorL1, 0), linewidth=2)
+plot(ema2, 'ema2', color=color.new(colorL2, 0), linewidth=2)
+plot(ema3, 'ema3', color=color.new(colorL3, 0), linewidth=2)
+plot(ema4, 'ema4', color=color.new(colorL4, 0), linewidth=2)
+plot(ema5, 'ema5', color=color.new(colorL5, 0), linewidth=2)
+plot(ema6, 'ema6', color=color.new(colorL6, 0), linewidth=2)
+plot(ema7, 'ema7', color=color.new(colorL7, 0), linewidth=2)
+plot(ema8, 'ema8', color=color.new(colorL8, 0), linewidth=2)
